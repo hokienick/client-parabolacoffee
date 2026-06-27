@@ -1,19 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: oklch(0.11 0.015 60);
-  --foreground: oklch(0.95 0.01 80);
-  --surface: oklch(0.16 0.015 60);
-  --surface-2: oklch(0.20 0.015 60);
-  --accent: oklch(0.72 0.17 68);
-  --accent-dim: oklch(0.60 0.14 68);
-  --muted: oklch(0.52 0.03 65);
-  --border: oklch(0.22 0.015 60);
+  --background: oklch(1.000 0.000 0);
+  --foreground: oklch(0.18 0.01 240);
+  --surface: oklch(0.97 0.005 210);
+  --primary: oklch(0.52 0.13 210);
+  --primary-light: oklch(0.88 0.06 210);
+  --accent: oklch(0.63 0.17 38);
+  --accent-light: oklch(0.92 0.05 38);
+  --gold: oklch(0.70 0.08 85);
+  --muted: oklch(0.50 0.02 240);
+  --border: oklch(0.90 0.01 210);
 
   /* Easing curves */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 
   /* Z-index scale */
   --z-dropdown: 100;
@@ -28,14 +29,15 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
   --color-accent: var(--accent);
-  --color-accent-dim: var(--accent-dim);
+  --color-accent-light: var(--accent-light);
+  --color-gold: var(--gold);
   --color-muted: var(--muted);
   --color-border: var(--border);
-  --font-display: var(--font-outfit);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-bricolage);
+  --font-sans: var(--font-figtree);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -54,7 +56,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   text-wrap: balance;
   font-family: var(--font-display), system-ui, sans-serif;
 }

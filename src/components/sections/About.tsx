@@ -1,98 +1,84 @@
-import FadeIn from "@/components/FadeIn";
+"use client";
+
+import { motion, useInView } from "motion/react";
+import { useRef } from "react";
+import Image from "next/image";
 
 export default function About() {
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+
   return (
-    <section id="about" className="py-28 md:py-36 px-6 md:px-12 lg:px-20">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 md:gap-24 items-center">
-        {/* Left: Visual element */}
-        <FadeIn direction="left">
-          <div className="relative">
-            {/* Stacked offset blocks */}
-            <div
-              className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden"
-              style={{ background: "oklch(0.16 0.015 60)" }}
-            >
-              {/* Large typographic element */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span
-                  className="font-display font-black select-none leading-none text-center"
-                  style={{
-                    fontSize: "clamp(6rem, 20vw, 14rem)",
-                    color: "oklch(0.72 0.17 68 / 0.12)",
-                    letterSpacing: "-0.04em",
-                  }}
-                >
-                  ∩
-                </span>
-              </div>
-              {/* Content overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <div className="border-t border-border pt-6 flex items-end justify-between">
-                  <div>
-                    <p className="text-muted text-xs uppercase tracking-widest mb-1">Est.</p>
-                    <p className="font-display font-bold text-4xl text-foreground">2020</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-muted text-xs uppercase tracking-widest mb-1">Location</p>
-                    <p className="font-display font-bold text-foreground text-base">Normal Heights</p>
-                    <p className="text-muted text-sm">San Diego, CA</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <section id="about" ref={ref} className="py-24 md:py-32 px-5 md:px-10 overflow-hidden">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
 
-            {/* Floating accent card */}
-            <div
-              className="absolute -bottom-6 -right-6 md:-right-8 rounded-xl px-6 py-5 border border-accent/30"
-              style={{ background: "oklch(0.16 0.015 60)" }}
-            >
-              <p className="text-accent font-display font-bold text-2xl">100%</p>
-              <p className="text-muted text-xs mt-0.5">Latin American sourced</p>
-            </div>
+        {/* Left: photo + floating stat */}
+        <motion.div
+          className="relative"
+          initial={{ opacity: 0, x: -40 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+        >
+          <div className="relative rounded-3xl overflow-hidden aspect-[4/5]">
+            <Image
+              src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=900&q=80"
+              alt="Barista carefully pouring a Chemex pour-over at Parabola Coffee"
+              fill
+              className="object-cover"
+            />
           </div>
-        </FadeIn>
 
-        {/* Right: Story */}
-        <FadeIn direction="right" delay={0.1}>
-          <div className="space-y-6">
-            <p className="text-accent font-semibold text-sm tracking-widest uppercase">
-              Our Story
+          {/* Floating accent — year established */}
+          <div
+            className="absolute -bottom-5 -right-4 md:-right-8 rounded-2xl px-6 py-5 shadow-lg"
+            style={{ background: "oklch(0.52 0.13 210)" }}
+          >
+            <p className="text-white/70 text-xs font-bold uppercase tracking-widest">Est.</p>
+            <p className="text-white font-display font-bold text-4xl leading-none">2020</p>
+            <p className="text-white/70 text-xs mt-1">Normal Heights</p>
+          </div>
+        </motion.div>
+
+        {/* Right: story */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
+        >
+          <p className="text-primary font-bold text-sm tracking-widest uppercase mb-5">Our Story</p>
+
+          <h2 className="font-display font-bold text-[clamp(2rem,5vw,3.2rem)] leading-[1.05] text-foreground mb-7">
+            Started at Home.<br />Rooted in Community.
+          </h2>
+
+          <div className="space-y-4 text-muted leading-relaxed max-w-lg text-[1.05rem]">
+            <p>
+              Parabola Coffee began with curiosity and passion. Inspired by local North Park
+              roasters, we started roasting in our home, determined to craft a perfect cup.
             </p>
-            <h2 className="font-display font-black text-[clamp(2.2rem,5vw,3.5rem)] leading-[1.0] tracking-tight text-foreground">
-              Started at Home. Rooted in Community.
-            </h2>
-            <div className="space-y-4 text-muted leading-relaxed max-w-lg">
-              <p>
-                Parabola Coffee began with curiosity and a home roaster. Driven by a passion for
-                exceptional coffee and a deep belief in community, we started sharing our craft with
-                neighbors before ever opening a door.
-              </p>
-              <p>
-                In March 2020, we set up a coffee cart at Second Chance Beer Lounge. Despite the
-                timing, the Normal Heights community showed up. That energy is what drives everything
-                we do.
-              </p>
-              <p>
-                We source exclusively from Latin American farms, with a focus on supporting
-                minority-owned operations. Every bag tells the story of the people who grew it.
-              </p>
-            </div>
-
-            <div className="pt-4 grid grid-cols-2 gap-6 border-t border-border">
-              {[
-                { stat: "Fun", label: "Friendly, and caring" },
-                { stat: "Local", label: "Artists featured in-shop" },
-                { stat: "Eco", label: "Sustainable delivery" },
-                { stat: "Daily", label: "7:30am to 3pm" },
-              ].map(({ stat, label }) => (
-                <div key={stat}>
-                  <p className="font-display font-bold text-foreground text-xl">{stat}</p>
-                  <p className="text-muted text-sm mt-0.5">{label}</p>
-                </div>
-              ))}
-            </div>
+            <p>
+              In March 2020, we launched our coffee cart at Second Chance Beer Lounge. Despite
+              opening during a pandemic, the community showed up. They&apos;ve never stopped.
+            </p>
+            <p>
+              We source exclusively from Latin American farms, with a focus on minority-owned
+              operations. Every bag tells the story of the people who grew it.
+            </p>
           </div>
-        </FadeIn>
+
+          <div className="mt-10 grid grid-cols-3 gap-4 pt-8 border-t border-border">
+            {[
+              { num: "100%", label: "Latin American sourced" },
+              { num: "7 days", label: "a week, 7:30–3pm" },
+              { num: "Local", label: "artists in-shop" },
+            ].map(({ num, label }) => (
+              <div key={label}>
+                <p className="font-display font-bold text-foreground text-xl leading-tight">{num}</p>
+                <p className="text-muted text-xs mt-1 leading-snug">{label}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

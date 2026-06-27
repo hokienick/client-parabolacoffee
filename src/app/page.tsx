@@ -1,9 +1,9 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
-import Roasts from "@/components/sections/Roasts";
+import Menu from "@/components/sections/Menu";
 import TheShop from "@/components/sections/TheShop";
-import Merch from "@/components/sections/Merch";
+import Gifts from "@/components/sections/Gifts";
 import Footer from "@/components/sections/Footer";
 
 export default function Home() {
@@ -12,9 +12,9 @@ export default function Home() {
       <Nav />
       <Hero />
       <About />
-      <Roasts />
+      <Menu />
       <TheShop />
-      <Merch />
+      <Gifts />
       <Footer />
     </main>
   );
