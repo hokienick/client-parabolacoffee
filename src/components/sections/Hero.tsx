@@ -8,105 +8,95 @@ const EASE_OUT_QUINT = [0.22, 1, 0.36, 1] as const;
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden">
-      {/* Hero photo — subtle Ken Burns scale on load */}
-      <motion.div
-        className="absolute inset-0 -z-10"
-        initial={{ scale: 1.06 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.8, ease: EASE_OUT_EXPO }}
-      >
-        <Image
-          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=80"
-          alt="Three friends toasting with coffee cups at Parabola Coffee"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, oklch(0.10 0.02 240 / 0.35) 0%, oklch(0.10 0.02 240 / 0.10) 40%, oklch(0.10 0.02 240 / 0.65) 100%)",
-          }}
-        />
-      </motion.div>
+    <section className="min-h-screen grid md:grid-cols-[1fr_1fr] overflow-hidden">
 
-      {/* Hours badge */}
-      <motion.div
-        className="absolute top-24 right-5 md:right-10"
-        initial={{ opacity: 0, x: 12 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.9, ease: EASE_OUT_QUINT }}
+      {/* Left panel — brand teal, logo dominant */}
+      <div className="relative flex flex-col justify-between px-8 md:px-12 pt-28 pb-10 md:py-14"
+        style={{ background: "oklch(0.52 0.13 210)" }}
       >
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-3 text-center shadow-sm">
-          <p className="text-xs font-bold tracking-widest uppercase text-primary">Open Daily</p>
-          <p className="text-foreground font-display font-bold text-lg leading-tight mt-0.5">7:30am – 3pm</p>
-        </div>
-      </motion.div>
-
-      {/* Main content — staggered entrance from bottom */}
-      <div className="mt-auto px-5 md:px-10 pb-16 md:pb-20">
-        {/* Logo — lead element, comes in first */}
+        {/* Logo — the brand, featured front and center */}
         <motion.div
-          className="mb-8"
-          initial={{ opacity: 0, y: 28 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.15, ease: EASE_OUT_EXPO }}
+          transition={{ duration: 0.9, delay: 0.1, ease: EASE_OUT_EXPO }}
         >
           <Image
             src="/logo-white.png"
             alt="Parabola Coffee Roasting Co."
-            width={260}
-            height={140}
-            className="h-28 md:h-36 w-auto object-contain drop-shadow-lg"
+            width={320}
+            height={172}
+            className="h-28 md:h-36 w-auto object-contain"
             priority
           />
         </motion.div>
 
-        {/* Tagline */}
-        <motion.p
-          className="text-white/90 text-base md:text-lg font-medium max-w-sm leading-relaxed mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.35, ease: EASE_OUT_QUINT }}
-        >
-          Specialty Latin American coffee, roasted with community in mind.
-          Come find us on Adams Ave.
-        </motion.p>
+        {/* Tagline + details */}
+        <div className="mt-auto">
+          <motion.p
+            className="text-white/90 text-lg md:text-xl font-medium leading-relaxed max-w-xs mb-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.35, ease: EASE_OUT_QUINT }}
+          >
+            Specialty Latin American coffee roasted with community in mind.
+          </motion.p>
 
-        {/* CTAs — last to arrive, 100ms after tagline */}
-        <motion.div
-          className="flex flex-wrap gap-3"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5, ease: EASE_OUT_QUINT }}
-        >
-          <a
-            href="#menu"
-            className="inline-flex items-center gap-2 bg-accent text-white font-bold text-sm px-6 py-3 rounded-full transition-all duration-150 hover:opacity-90 active:scale-95"
+          <motion.div
+            className="flex flex-col gap-3"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5, ease: EASE_OUT_QUINT }}
           >
-            See Our Menu
-          </a>
-          <a
-            href="#shop"
-            className="inline-flex items-center gap-2 bg-white text-foreground font-bold text-sm px-6 py-3 rounded-full transition-all duration-150 hover:bg-surface active:scale-95"
+            <a
+              href="#menu"
+              className="inline-flex items-center justify-center gap-2 bg-white font-bold text-sm px-7 py-3.5 rounded-full transition-all duration-150 hover:bg-surface active:scale-95 w-fit"
+              style={{ color: "oklch(0.52 0.13 210)" }}
+            >
+              See Our Menu
+            </a>
+            <a
+              href="https://www.doordash.com/store/parabola-coffee-roasting-co-san-diego-24422595/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-accent text-white font-bold text-sm px-7 py-3.5 rounded-full transition-all duration-150 hover:opacity-90 active:scale-95 w-fit"
+            >
+              Order on DoorDash
+            </a>
+          </motion.div>
+
+          {/* Hours + address */}
+          <motion.div
+            className="mt-8 pt-6 border-t border-white/20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
           >
-            3504 Adams Ave
-          </a>
-        </motion.div>
+            <p className="text-white/70 text-xs font-bold uppercase tracking-widest mb-2">Hours &amp; Location</p>
+            <p className="text-white font-semibold text-sm">Mon–Fri 7:00am · Sat–Sun 7:30am · Close 3pm daily</p>
+            <p className="text-white/80 text-sm mt-0.5">3504 Adams Ave · Normal Heights, San Diego</p>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Location tag */}
+      {/* Right panel — community photo */}
       <motion.div
-        className="absolute bottom-6 right-5 md:right-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.1, duration: 0.6 }}
+        className="relative min-h-[50vh] md:min-h-0"
+        initial={{ opacity: 0, scale: 1.04 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.6, ease: EASE_OUT_EXPO }}
       >
-        <span className="text-white/60 text-xs font-semibold tracking-widest uppercase">
-          Normal Heights, San Diego
-        </span>
+        <Image
+          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80"
+          alt="Friends sharing coffee at Parabola Coffee in Normal Heights"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Subtle teal tint at the seam to blend with left panel */}
+        <div
+          className="absolute inset-y-0 left-0 w-8 pointer-events-none"
+          style={{ background: "linear-gradient(to right, oklch(0.52 0.13 210), transparent)" }}
+        />
       </motion.div>
     </section>
   );
