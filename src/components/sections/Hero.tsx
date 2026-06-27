@@ -10,34 +10,33 @@ export default function Hero() {
   return (
     <section className="min-h-screen grid md:grid-cols-[1fr_1fr] overflow-hidden">
 
-      {/* Left panel — brand teal. Logo is the star, centered vertically. */}
+      {/* Left panel — brand teal. All content centered between nav and bottom. */}
       <div
         className="relative flex flex-col min-h-[60vh] md:min-h-screen px-8 md:px-14"
         style={{ background: "oklch(0.52 0.13 210)" }}
       >
-        {/* Vertical rhythm: top spacer pushes logo to true center */}
-        {/* Nav clearance — fixed nav is ~72px, add breathing room above logo */}
-        <div className="h-28 md:h-36 flex-shrink-0" />
+        {/* Nav clearance */}
+        <div className="h-20 md:h-24 flex-shrink-0" />
 
-        {/* Logo — the star of the page, large and commanding */}
-        <motion.div
-          className="flex justify-start"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.0, delay: 0.15, ease: EASE_OUT_EXPO }}
-        >
-          <Image
-            src="/logo-white.png"
-            alt="Parabola Coffee Roasting Co."
-            width={480}
-            height={258}
-            className="w-[280px] md:w-[380px] h-auto object-contain"
-            priority
-          />
-        </motion.div>
+        {/* Center block — logo + tagline + CTAs + hours all centered as one unit */}
+        <div className="flex-1 flex flex-col justify-center py-6">
+          {/* Logo — the star of the page, large and commanding */}
+          <motion.div
+            className="flex justify-start mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.0, delay: 0.15, ease: EASE_OUT_EXPO }}
+          >
+            <Image
+              src="/logo-white.png"
+              alt="Parabola Coffee Roasting Co."
+              width={480}
+              height={258}
+              className="w-[280px] md:w-[400px] h-auto object-contain"
+              priority
+            />
+          </motion.div>
 
-        {/* Bottom half: tagline, CTAs, hours */}
-        <div className="flex-1 flex flex-col justify-end pb-10 md:pb-14 pt-8">
           <motion.p
             className="text-white/90 text-base md:text-lg font-medium leading-relaxed max-w-xs mb-8"
             initial={{ opacity: 0 }}
@@ -48,7 +47,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div
-            className="flex flex-col gap-3"
+            className="flex flex-col gap-3 mb-10"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.55, ease: EASE_OUT_QUINT }}
@@ -71,7 +70,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            className="mt-8 pt-6 border-t border-white/20"
+            className="pt-6 border-t border-white/20"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.75 }}
@@ -81,6 +80,9 @@ export default function Hero() {
             <p className="text-white/80 text-sm mt-0.5">3504 Adams Ave · Normal Heights, San Diego</p>
           </motion.div>
         </div>
+
+        {/* Bottom spacer for breathing room */}
+        <div className="h-8 md:h-12 flex-shrink-0" />
       </div>
 
       {/* Right panel — community photo */}
