@@ -76,12 +76,14 @@ export default function Footer() {
               <p className="text-white/50 text-sm mt-1">Exclusive roast drops, seasonal drinks, and shop news.</p>
             </div>
             <form className="flex gap-3 w-full md:w-auto" onSubmit={(e) => e.preventDefault()}>
+              <label htmlFor="footer-email" className="sr-only">Email address</label>
               <input
+                id="footer-email"
                 type="email"
                 placeholder="your@email.com"
-                className="flex-1 md:w-60 px-4 py-2.5 rounded-full text-sm bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-primary transition-colors"
+                className="flex-1 md:w-60 px-4 py-2.5 rounded-full text-sm bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 transition-all duration-200"
               />
-              <button type="submit" className="px-6 py-2.5 bg-accent text-white text-sm font-bold rounded-full hover:opacity-90 transition-opacity">
+              <button type="submit" className="px-6 py-2.5 bg-accent text-white text-sm font-bold rounded-full hover:opacity-90 active:scale-95 transition-all duration-150">
                 Subscribe
               </button>
             </form>
@@ -90,8 +92,8 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-          <p className="text-white/40 text-xs">&copy; {new Date().getFullYear()} Parabola Coffee Roasting Co.</p>
-          <p className="text-white/40 text-xs">Supporting minority-owned farms across Latin America</p>
+          <p className="text-white/55 text-xs">&copy; {new Date().getFullYear()} Parabola Coffee Roasting Co.</p>
+          <p className="text-white/55 text-xs">Supporting minority-owned farms across Latin America</p>
         </div>
       </div>
     </footer>

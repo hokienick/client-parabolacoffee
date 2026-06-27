@@ -13,9 +13,9 @@ export default function TheShop() {
       <div className="max-w-6xl mx-auto">
 
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <p className="text-accent font-bold text-sm tracking-widest uppercase mb-4">Come Visit</p>
           <h2 className="font-display font-bold text-[clamp(2rem,5.5vw,3.8rem)] leading-[1.0] text-foreground mb-16">
@@ -75,7 +75,7 @@ export default function TheShop() {
               href="https://maps.google.com/?q=3504+Adams+Ave+San+Diego+CA+92116"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between rounded-2xl p-6 font-bold text-white hover:opacity-90 transition-opacity"
+              className="flex items-center justify-between rounded-2xl p-6 font-bold text-white hover:opacity-90 active:scale-95 transition-all duration-150"
               style={{ background: "oklch(0.52 0.13 210)" }}
             >
               <span className="font-display text-lg">Get Directions</span>

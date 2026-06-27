@@ -23,9 +23,9 @@ export default function Gifts() {
     >
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14"
         >
           <div>
@@ -47,9 +47,10 @@ export default function Gifts() {
               href="https://parabolacoffee.com/collections/all"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-5 rounded-2xl p-7 border border-border bg-white hover:border-primary hover:shadow-sm transition-all"
+              className="group flex items-center gap-5 rounded-2xl p-7 border border-border bg-white hover:border-primary hover:shadow-md active:scale-[0.98] transition-all duration-150"
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
+              whileHover={{ y: -4, transition: { duration: 0.2, ease: [0.23, 1, 0.32, 1] } }}
               transition={{ duration: 0.5, delay: i * 0.07, ease: [0.23, 1, 0.32, 1] }}
             >
               <span className="text-4xl flex-shrink-0" aria-hidden="true">{emoji}</span>
@@ -74,7 +75,7 @@ export default function Gifts() {
             href="https://parabolacoffee.com/collections/all"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border-2 border-foreground text-foreground font-bold text-sm px-8 py-3 rounded-full hover:border-primary hover:text-primary transition-colors"
+            className="inline-flex items-center gap-2 border-2 border-foreground text-foreground font-bold text-sm px-8 py-3 rounded-full hover:border-primary hover:text-primary active:scale-95 transition-all duration-150"
           >
             Shop Everything Online
           </a>

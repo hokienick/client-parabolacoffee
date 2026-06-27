@@ -4,6 +4,8 @@ import { motion, useInView } from "motion/react";
 import { useRef } from "react";
 import Image from "next/image";
 
+const EASE_OUT_QUINT = [0.22, 1, 0.36, 1] as const;
+
 const drinks = [
   { name: "Cardamom Latte", type: "Special", price: "6.25 / 7.25", desc: "A warming blend of espresso and aromatic cardamom. A Parabola favorite.", tag: "Customer Fave" },
   { name: "Horchata Cold Brew", type: "Cold Brew", price: "7.25 / —", desc: "Rich cold brew meets house-made horchata. Smooth, sweet, unforgettable.", tag: "Seasonal" },
@@ -32,12 +34,12 @@ export default function Menu() {
     >
       <div className="max-w-6xl mx-auto">
 
-        {/* Header */}
+        {/* Header — pure fade, no slide */}
         <motion.div
           className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14"
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <div>
             <p className="text-primary font-bold text-sm tracking-widest uppercase mb-4">Drink Menu</p>
@@ -55,19 +57,23 @@ export default function Menu() {
           </div>
         </motion.div>
 
-        {/* Drink grid — 2 columns, not identical cards */}
+        {/* Drink list — legitimate stagger: these ARE a list */}
         <div className="grid md:grid-cols-2 gap-0">
           {drinks.map((drink, i) => (
             <motion.div
               key={drink.name}
-              className="py-7 px-2 md:px-6 border-t border-border group"
-              initial={{ opacity: 0, y: 20 }}
+              className="py-7 px-2 md:px-6 border-t border-border group cursor-default"
+              initial={{ opacity: 0, y: 12 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.05 * i, ease: [0.23, 1, 0.32, 1] }}
+              transition={{
+                duration: 0.5,
+                delay: 0.1 + i * 0.04,
+                ease: EASE_OUT_QUINT,
+              }}
             >
               <div className="flex items-start justify-between gap-4 mb-2">
                 <div className="flex items-center gap-3 flex-wrap">
-                  <h3 className="font-display font-bold text-lg text-foreground group-hover:text-primary transition-colors">
+                  <h3 className="font-display font-bold text-lg text-foreground group-hover:text-primary transition-colors duration-150">
                     {drink.name}
                   </h3>
                   {drink.tag && (
@@ -84,17 +90,17 @@ export default function Menu() {
           ))}
         </div>
 
-        {/* Also serve section */}
+        {/* Also serve */}
         <motion.div
           className="mt-12 pt-8 border-t border-border"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
         >
           <p className="text-muted text-sm mb-4">Also on the menu:</p>
           <div className="flex flex-wrap gap-2">
             {["Drip Coffee", "Americano", "Espresso", "Vanilla Latte", "Cappuccino", "Mocha", "Mint Cold Brew", "Chai Latte"].map((item) => (
-              <span key={item} className="text-sm px-4 py-1.5 rounded-full border border-border text-foreground font-medium bg-white">
+              <span key={item} className="text-sm px-4 py-1.5 rounded-full border border-border text-foreground font-medium bg-white transition-colors duration-150 hover:border-primary hover:text-primary cursor-default">
                 {item}
               </span>
             ))}

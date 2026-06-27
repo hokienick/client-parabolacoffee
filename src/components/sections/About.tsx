@@ -33,9 +33,9 @@ export default function About() {
             className="absolute -bottom-5 -right-4 md:-right-8 rounded-2xl px-6 py-5 shadow-lg"
             style={{ background: "oklch(0.52 0.13 210)" }}
           >
-            <p className="text-white/70 text-xs font-bold uppercase tracking-widest">Est.</p>
+            <p className="text-white/90 text-xs font-bold uppercase tracking-widest">Est.</p>
             <p className="text-white font-display font-bold text-4xl leading-none">2020</p>
-            <p className="text-white/70 text-xs mt-1">Normal Heights</p>
+            <p className="text-white/90 text-xs mt-1">Normal Heights</p>
           </div>
         </motion.div>
 

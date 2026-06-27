@@ -59,15 +59,16 @@ export default function Nav() {
 
         <a
           href="#shop"
-          className={`hidden md:inline-flex items-center text-sm font-bold px-5 py-2.5 rounded-full hover:opacity-90 transition-all ${scrolled ? "text-white bg-primary" : "text-foreground bg-white"}`}
+          className={`hidden md:inline-flex items-center text-sm font-bold px-5 py-2.5 rounded-full hover:opacity-90 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${scrolled ? "text-white bg-primary" : "text-foreground bg-white"}`}
         >
           Visit Us
         </a>
 
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden p-2 flex flex-col gap-1.5"
+          className="md:hidden p-3 flex flex-col gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
           <span className={`block w-6 h-0.5 transition-all duration-300 ${scrolled ? "bg-foreground" : "bg-white"} ${open ? "translate-y-2 rotate-45" : ""}`} />
           <span className={`block w-6 h-0.5 transition-all duration-300 ${scrolled ? "bg-foreground" : "bg-white"} ${open ? "opacity-0" : ""}`} />
