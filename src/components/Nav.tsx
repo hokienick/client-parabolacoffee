@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
 const links = [
-  { label: "Coffee", href: "#roasts" },
   { label: "About", href: "#about" },
+  { label: "Coffee", href: "#roasts" },
   { label: "The Shop", href: "#shop" },
-  { label: "Roasts", href: "#roasts" },
+  { label: "Merch", href: "#merch" },
 ];
 
 export default function Nav() {
