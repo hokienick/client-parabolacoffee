@@ -36,11 +36,11 @@ export default function Nav() {
       >
         <a href="#" aria-label="Parabola Coffee home">
           <Image
-            src="/logo.png"
+            src={scrolled ? "/logo.png" : "/logo-white.png"}
             alt="Parabola Coffee Roasting Co."
             width={130}
             height={70}
-            className="h-12 w-auto object-contain"
+            className="h-12 w-auto object-contain transition-opacity duration-300"
             priority
           />
         </a>
@@ -50,7 +50,7 @@ export default function Nav() {
             <a
               key={link.label}
               href={link.href}
-              className="text-sm font-semibold text-foreground hover:text-primary transition-colors"
+              className={`text-sm font-semibold transition-colors ${scrolled ? "text-foreground hover:text-primary" : "text-white/90 hover:text-white"}`}
             >
               {link.label}
             </a>
@@ -59,7 +59,7 @@ export default function Nav() {
 
         <a
           href="#shop"
-          className="hidden md:inline-flex items-center text-sm font-bold text-white bg-primary px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity"
+          className={`hidden md:inline-flex items-center text-sm font-bold px-5 py-2.5 rounded-full hover:opacity-90 transition-all ${scrolled ? "text-white bg-primary" : "text-foreground bg-white"}`}
         >
           Visit Us
         </a>
@@ -69,9 +69,9 @@ export default function Nav() {
           className="md:hidden p-2 flex flex-col gap-1.5"
           aria-label="Toggle menu"
         >
-          <span className={`block w-6 h-0.5 bg-foreground transition-transform duration-300 ${open ? "translate-y-2 rotate-45" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-foreground transition-opacity duration-300 ${open ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-foreground transition-transform duration-300 ${open ? "-translate-y-2 -rotate-45" : ""}`} />
+          <span className={`block w-6 h-0.5 transition-all duration-300 ${scrolled ? "bg-foreground" : "bg-white"} ${open ? "translate-y-2 rotate-45" : ""}`} />
+          <span className={`block w-6 h-0.5 transition-all duration-300 ${scrolled ? "bg-foreground" : "bg-white"} ${open ? "opacity-0" : ""}`} />
+          <span className={`block w-6 h-0.5 transition-all duration-300 ${scrolled ? "bg-foreground" : "bg-white"} ${open ? "-translate-y-2 -rotate-45" : ""}`} />
         </button>
       </motion.header>
 
