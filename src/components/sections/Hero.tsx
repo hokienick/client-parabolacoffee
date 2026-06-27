@@ -10,42 +10,48 @@ export default function Hero() {
   return (
     <section className="min-h-screen grid md:grid-cols-[1fr_1fr] overflow-hidden">
 
-      {/* Left panel — brand teal, logo dominant */}
-      <div className="relative flex flex-col justify-between px-8 md:px-12 pt-28 pb-10 md:py-14"
+      {/* Left panel — brand teal. Logo is the star, centered vertically. */}
+      <div
+        className="relative flex flex-col min-h-[60vh] md:min-h-screen px-8 md:px-14"
         style={{ background: "oklch(0.52 0.13 210)" }}
       >
-        {/* Logo — the brand, featured front and center */}
+        {/* Vertical rhythm: top spacer pushes logo to true center */}
+        {/* Nav clearance — fixed nav is ~72px, add breathing room above logo */}
+        <div className="h-28 md:h-36 flex-shrink-0" />
+
+        {/* Logo — the star of the page, large and commanding */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          className="flex justify-start"
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.1, ease: EASE_OUT_EXPO }}
+          transition={{ duration: 1.0, delay: 0.15, ease: EASE_OUT_EXPO }}
         >
           <Image
             src="/logo-white.png"
             alt="Parabola Coffee Roasting Co."
-            width={320}
-            height={172}
-            className="h-28 md:h-36 w-auto object-contain"
+            width={480}
+            height={258}
+            className="w-[280px] md:w-[380px] h-auto object-contain"
             priority
           />
         </motion.div>
 
-        {/* Tagline + details */}
-        <div className="mt-auto">
+        {/* Bottom half: tagline, CTAs, hours */}
+        <div className="flex-1 flex flex-col justify-end pb-10 md:pb-14 pt-8">
           <motion.p
-            className="text-white/90 text-lg md:text-xl font-medium leading-relaxed max-w-xs mb-10"
+            className="text-white/90 text-base md:text-lg font-medium leading-relaxed max-w-xs mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.35, ease: EASE_OUT_QUINT }}
+            transition={{ duration: 0.7, delay: 0.4, ease: EASE_OUT_QUINT }}
           >
             Specialty Latin American coffee roasted with community in mind.
           </motion.p>
 
           <motion.div
             className="flex flex-col gap-3"
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5, ease: EASE_OUT_QUINT }}
+            transition={{ duration: 0.6, delay: 0.55, ease: EASE_OUT_QUINT }}
           >
             <a
               href="#menu"
@@ -64,15 +70,14 @@ export default function Hero() {
             </a>
           </motion.div>
 
-          {/* Hours + address */}
           <motion.div
             className="mt-8 pt-6 border-t border-white/20"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
+            transition={{ duration: 0.6, delay: 0.75 }}
           >
-            <p className="text-white/70 text-xs font-bold uppercase tracking-widest mb-2">Hours &amp; Location</p>
-            <p className="text-white font-semibold text-sm">Mon–Fri 7:00am · Sat–Sun 7:30am · Close 3pm daily</p>
+            <p className="text-white/70 text-xs font-bold uppercase tracking-widest mb-1.5">Hours &amp; Location</p>
+            <p className="text-white font-semibold text-sm">Mon–Fri 7:00am · Sat–Sun 7:30am · Close 3pm</p>
             <p className="text-white/80 text-sm mt-0.5">3504 Adams Ave · Normal Heights, San Diego</p>
           </motion.div>
         </div>
@@ -92,7 +97,6 @@ export default function Hero() {
           className="object-cover"
           priority
         />
-        {/* Subtle teal tint at the seam to blend with left panel */}
         <div
           className="absolute inset-y-0 left-0 w-8 pointer-events-none"
           style={{ background: "linear-gradient(to right, oklch(0.52 0.13 210), transparent)" }}
